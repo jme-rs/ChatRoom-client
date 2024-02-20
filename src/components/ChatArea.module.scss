@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .title {
+    margin: 0.5rem;
+  }
+
+  .messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    flex-grow: 1;
+    margin-left: 0.5rem;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e0e0e0;
+
+      .Persona {
+        margin: 0.5rem;
+      }
+
+      .Body2 {
+        margin: 0.5rem;
+        margin-left: 3rem;
+        margin-top: 0;
+      }
+    }
+  }
+
+  .wrapper {
+    margin: 0.5rem;
+
+    .InputContainer {
+      display: flex;
+      flex-direction: row;
+
+      .sendButton {
+        display: flex;
+        align-items: flex-end;
+        margin-left: 0.5rem;
+
+        .Button {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
