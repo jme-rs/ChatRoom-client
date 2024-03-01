@@ -12,11 +12,11 @@ async fn get_room_list() -> Result<String, ()> {
 
     match res {
         Ok(res) => {
-            println!("{}", res.status().to_string());
+            println!("get_room_list: {}", res.status().to_string());
             Ok(res.text().await.unwrap())
         }
         Err(e) => {
-            println!("{}", e);
+            println!("get_room_list: {}", e);
             Err(())
         }
     }
@@ -33,11 +33,11 @@ async fn create_room(room: &str) -> Result<(), ()> {
 
     match res {
         Ok(res) => {
-            println!("{}", res.status().to_string());
+            println!("create_room: {}", res.status().to_string());
             Ok(())
         }
         Err(e) => {
-            println!("{}", e);
+            println!("create_room: {}", e);
             Err(())
         }
     }
@@ -53,11 +53,11 @@ async fn get_chat_room(room: &str) -> Result<String, ()> {
 
     match res {
         Ok(res) => {
-            println!("{}", res.status().to_string());
+            println!("get_chat_room: {}", res.status().to_string());
             Ok(res.text().await.unwrap())
         }
         Err(e) => {
-            println!("{}", e);
+            println!("get_chat_room: {}", e);
             Err(())
         }
     }
@@ -65,7 +65,9 @@ async fn get_chat_room(room: &str) -> Result<String, ()> {
 
 #[tauri::command]
 async fn send_msg(id: &str, room: &str, msg: &str) -> Result<(), ()> {
+    let msg = msg.replace("\n", "\\n");
     let client = Client::new();
+    
     let res = client
         .post(format!("http://localhost:8080/{}", room))
         .body(format!("{{\"id\": \"{}\", \"message\": \"{}\"}}", id, msg))
@@ -74,11 +76,11 @@ async fn send_msg(id: &str, room: &str, msg: &str) -> Result<(), ()> {
 
     match res {
         Ok(res) => {
-            println!("{}", res.status().to_string());
+            println!("send_msg: {}", res.status().to_string());
             Ok(())
         }
         Err(e) => {
-            println!("{}", e);
+            println!("send_msg: {}", e);
             Err(())
         }
     }
@@ -94,11 +96,11 @@ async fn get_msg(room: &str) -> Result<String, ()> {
 
     match res {
         Ok(res) => {
-            println!("{}", res.status().to_string());
+            println!("get_msg: {}", res.status().to_string());
             Ok(res.text().await.unwrap())
         }
         Err(e) => {
-            println!("{}", e);
+            println!("get_msg: {}", e);
             Err(())
         }
     }

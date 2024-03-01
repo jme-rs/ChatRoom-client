@@ -9,11 +9,163 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --primary-color: #006ac6;
+  --secondary-color: #e6f1ff;
+  --border-color: #ddd;
+  --text-color: black;
+  --background-color: #fff;
+  --body-background-color: #eeeef2;
+  --tag-color: #399681;
+  --backquote-color: #555;
+  --note-color: #fff6d0;
+  --warning-color: #ffe5e5;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
+}
+
+ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+
+  li {
+    margin: 0.2rem 0;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+li {
+  ul {
+    margin: 0.2rem 0;
+  }
+}
+
+table {
+  border-collapse: collapse;
+
+  th {
+    background-color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+  }
+
+  td {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+  }
+}
+
+p {
+  code {
+    background-color: #88888820;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-family: Consolas, monospace;
+  }
+}
+
+pre {
+  background-color: #88888820;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+
+  code {
+    font-family: Consolas, monospace;
+  }
+}
+
+details.tocWrapper {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  border-radius: 1rem;
+  transition: background-color 0.3s ease;
+
+  summary {
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  nav.toc {
+    padding-left: 2rem;
+
+    ol {
+      padding-left: 1rem;
+
+      li {
+        margin: 0.2rem 0;
+      }
+    }
+  }
+}
+
+blockquote {
+  margin: 2rem 0;
+  margin-left: 0.5rem;
+  padding-left: 1rem;
+  border-left: 0.3rem solid var(--border-color);
+  transition: color 0.3s ease;
+  color: var(--backquote-color);
+
+  ol {
+    padding-left: 1.5rem;
+  }
+}
+
+.footnotes {
+  ol {
+    padding-left: 2rem;
+  }
+}
+
+sup {
+  height: 0;
+  line-height: 1;
+  vertical-align: baseline;
+  position: relative;
+  bottom: 1ex;
+}
+
+ul.contains-task-list {
+  list-style-type: none;
+  padding-left: 0;
+
+  li.task-list-item {
+    list-style-type: none;
+  }
+}
+
+ol {
+  padding-left: 1.5rem;
+
+  li {
+    margin: 0.2rem 0;
+  }
+}
+
+dl {
+  margin: 1rem 0;
+
+  dt {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  dd {
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+  }
 }

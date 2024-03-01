@@ -11,6 +11,10 @@ import {
 
 import styles from './ChatArea.module.scss';
 import { Message } from '../types/message';
+import { getMdParser } from './MD';
+
+
+const mdParser = getMdParser();
 
 
 export default function ChatArea({
@@ -24,7 +28,7 @@ export default function ChatArea({
   const [timeline, setTimeline] = useState<Message[]>([]);
 
   async function sendMsg() {
-    await invoke("send_msg", { id: id || "Set your ID!", room: room, msg: inputMsg });
+    await invoke("send_msg", { id: id || "unknown", room: room, msg: inputMsg });
   }
 
   async function refreshTimeline() {
@@ -66,7 +70,15 @@ export default function ChatArea({
               // tertiaryText={msg.message}
               className={styles.Persona}
             />
-            <Body2 className={styles.Body2}>{msg.message}</Body2>
+            {/* <Body2 className={styles.Body2}>{msg.message}</Body2> */}
+            <Body2 className={styles.Body2}>
+              <div
+                key={idx}
+                dangerouslySetInnerHTML={{
+                  __html: mdParser.processSync(msg.message),
+                }}
+              />
+            </Body2>
           </div>
         )}
       </div>
