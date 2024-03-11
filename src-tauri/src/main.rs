@@ -67,7 +67,7 @@ async fn get_chat_room(room: &str) -> Result<String, ()> {
 async fn send_msg(id: &str, room: &str, msg: &str) -> Result<(), ()> {
     let msg = msg.replace("\n", "\\n");
     let client = Client::new();
-    
+
     let res = client
         .post(format!("http://localhost:8080/{}", room))
         .body(format!("{{\"id\": \"{}\", \"message\": \"{}\"}}", id, msg))
@@ -118,3 +118,4 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
+AAAAB3NzaC1yc2EAAAADAQABAAABAQDXVjnYwYK4k2E9Y0MD4Zb4+m9v4AdsGnjIqU0vQcSuG5nu7AxVtdMeh1jO9Jwrre8G3awX4jVJWKw/zvwob9VC3lSyxMjiahPkvdpii5f7jW8w0F3t282r1tGzqCkV5ZrIReO5CV+kLba6zzcP80QwSTODyVBMxgfYB93Wv9s6uuqeYowhQvdfPxAtfs3WWSQ/nVqIzcBbYyOhivFLCNudAjAXiDhCuypUUe2r7AdtDtiwrjLotVC44Z9egD46sd3mgmqiLU9eE9smVI6jtTUb7cWA1LGQ/o8Uz+7P0mKFzM48RSIYQNQQTe3X/7WfZ/QyhAOUk645S/jNpTwcsTbh
